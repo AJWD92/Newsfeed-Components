@@ -35,7 +35,7 @@ let menuItems = [
 */
 
 const header = document.querySelector('.header');
-const menuButton = document.querySelector('.menu-button');
+const navButton = document.querySelector('.menu-button');
 function createMenu(menuItems) {
   //define elements
   const menu = document.createElement('div');
@@ -51,7 +51,7 @@ function createMenu(menuItems) {
     listItem.textContent = item;
   });
   //event
-  menuButton.addEventListener('click', () => {
+  navButton.addEventListener('click', () => {
     menu.classList.toggle('menu--open');
   });
   return menu;
