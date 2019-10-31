@@ -116,8 +116,10 @@ function createSlot(
 
   const headH2 = document.createElement('h2');
   headH2.textContent = title;
+  headH2.classList.add('article');
   const timeStamp = document.createElement('p');
   timeStamp.textContent = date;
+  timeStamp.classList.add('date');
   const para1 = document.createElement('p');
   para1.textContent = firstParagraph;
   const para2 = document.createElement('p');
@@ -126,16 +128,19 @@ function createSlot(
   para3.textContent = thirdParagraph;
   const btn = document.createElement('span');
   btn.textContent = 'Read More';
+  btn.classList.add('expandButton');
 
   card.appendChild(headH2);
-  card.appendChild(timeStamp);
-  card.appendChild(para1);
-  card.appendChild(para2);
-  card.appendChild(para3);
-  card.appendChild(btn);
+  headH2.appendChild(timeStamp);
+  headH2.appendChild(para1);
+  headH2.appendChild(para2);
+  headH2.appendChild(para3);
+  headH2.appendChild(btn);
 
   // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
+  btn.addEventListener('click', () => {
+    headH2.classList.toggle('article-open');
+  });
   // Step 3: return the entire component.
   return card;
 }
