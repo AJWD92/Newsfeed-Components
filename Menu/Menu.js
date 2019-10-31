@@ -33,45 +33,27 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
-function navMenu(arr) {
-  const nav = document.createElement('div');
-  nav.classList.add('menu');
+
+const header = document.querySelector('.header');
+const menuButton = document.querySelector('.menu-button');
+function createMenu(menuItems) {
+  //define elements
+  const menu = document.createElement('div');
   const navList = document.createElement('ul');
-  navList.tagName = ul;
-  navList.classList.add('menu');
-  const students = document.createElement('li');
-  students.textContent = li;
-  students.classList.add('menu');
-  const faculty = document.createElement('li');
-  faculty.textContent = li;
-  faculty.classList.add('menu');
-  const whatsNew = document.createElement('li');
-  whatsNew.textContent = li;
-  whatsNew.classList.add('menu');
-  const tech = document.createElement('li');
-  tech.textContent = li;
-  tech.classList.add('menu');
-  const music = document.createElement('li');
-  music.textContent = li;
-  music.classList.add('menu');
-  const logOut = document.createElement('li');
-  logOut.textContent = li;
-  logOut.classList.add('menu');
+  //structure
+  menu.appendChild(navList);
 
-  nav.appendChild(navList);
-  navList.appendChild(students);
-  navList.appendChild(faculty);
-  navList.appendChild(whatsNew);
-  navList.appendChild(tech);
-  navList.appendChild(music);
-  navList.appendChild(logOut);
-
-  const navBtn = document.querySelector('.menu-button');
-  navBtn.addEventListener('click', () => {
-    navList.classList.toggle('menu-open');
+  //class names
+  menu.classList.add('menu');
+  menuItems.forEach((item) => {
+    const listItem = document.createElement('li');
+    navList.appendChild(listItem);
+    listItem.textContent = item;
   });
-
-  return navMenu;
+  //event
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  });
+  return menu;
 }
-
-document.createElement(navBtn);
+header.appendChild(createMenu(menuItems));
